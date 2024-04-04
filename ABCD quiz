@@ -1,0 +1,346 @@
+#quiz 3
+
+horizontal_stars = '***'
+vertical_repeats = 4  # 반복 횟수를 정수로 지정
+
+for _ in range(vertical_repeats):  # range를 사용하여 반복 횟수만큼 반복
+    print(horizontal_stars)
+
+#quiz 4_1
+
+a = '★'
+
+for i in range(3):
+    for j in range(1):
+        print(a * 4)
+
+#quiz 4_2
+
+a = '★'
+
+for _ in '1+3':
+    print(a * 4)
+
+#quiz 5_1
+
+import math
+
+def cylinder_volume(radius, height):
+
+    base_area = math.pi * (radius ** 2)
+    volume = base_area * height
+
+    return volume
+
+radius = float(input("반지름을 입력하세요: "))
+height = float(input("높이를 입력하세요: "))
+
+result = cylinder_volume(radius, height)
+print("원기둥의 부피는:", result)
+
+#quiz 5_2
+
+import math
+
+pi = math.pi
+radius = 3
+height = 2
+
+volume = pi * radius ** 2 * height
+
+print("원기둥의 부피는:", volume)
+
+#quiz 5_3
+
+import math
+
+def cylinder_volume(radius, height):
+    if radius <= 0 or height <= 0:
+        raise ValueError("반지름과 높이는 양수이어야 합니다.")
+    # 부피 계산
+    volume = math.pi * radius ** 2 * height
+    return volume
+
+print("여러 개의 원기둥의 부피를 계산합니다.")
+print("반지름과 높이를 입력하세요.")
+print("입력을 끝내려면 'q'를 입력하세요.")
+
+cylinders = []
+while True:
+    radius_input = input("반지름을 입력하세요: ")
+    if radius_input.lower() == 'q':
+        break
+    height_input = input("높이를 입력하세요: ")
+    if height_input.lower() == 'q':
+        break
+
+    try:
+        radius = float(radius_input)
+        height = float(height_input)
+        volume = cylinder_volume(radius, height)
+        cylinders.append({'radius': radius, 'height': height, 'volume': volume})
+    except ValueError as e:
+        print(e)
+        print("다시 시도하세요.")
+
+print("\n입력한 원기둥들의 부피:")
+for idx, cylinder in enumerate(cylinders, 1):
+    print(f"{idx}. 반지름: {cylinder['radius']}, 높이: {cylinder['height']}, 부피: {cylinder['volume']}")
+
+#quiz 6_1
+
+import datetime
+
+# 현재 시간 가져오기
+now = datetime.datetime.now()
+
+# 년, 월, 일, 시간, 분, 초 출력
+print("현재 시간:")
+print("년:", now.year)
+print("월:", now.month)
+print("일:", now.day)
+print("시간:", now.hour)
+print("분:", now.minute)
+print("초:", now.second)
+
+#quiz 6_2
+
+import datetime
+
+# 현재 시간 가져오기
+now = datetime.datetime.now()
+
+# 년, 월, 일, 요일, 시간, 분, 초 출력
+print("현재 시간:")
+print("년:", now.year)
+print("월:", now.month)
+print("일:", now.day)
+print("요일:", now.strftime("%A"))  # strftime 함수를 사용하여 요일을 문자열로 출력
+print("시간:", now.hour)
+print("분:", now.minute)
+print("초:", now.second)
+
+#quiz 7 정석
+
+# 학생들의 키 튜플
+student_heights = (166, 172, 177, 175, 185, 158, 130, 181, 169, 173)
+
+# 키가 170보다 큰 경우에만 출력
+for height in student_heights:
+    if height <= 170:
+        continue
+    print("키가 170보다 큰 학생의 키:", height)
+
+#quiz 7 입력 받는 방식(그냥 만들어 봤습니다.)
+
+# 학생들의 키를 입력받아서 저장할 빈 리스트 생성
+student_heights = []
+
+# 사용자로부터 학생들의 키 입력 받기
+while True:
+    height_input = input("학생의 키를 입력하세요 (종료하려면 'q'를 입력하세요): ")
+    if height_input.lower() == 'q':
+        break
+
+    try:
+        height = float(height_input)
+        student_heights.append(height)
+    except ValueError:
+        print("잘못된 입력입니다. 숫자 또는 'q'를 입력하세요.")
+
+# 입력된 키가 170보다 큰 경우에만 출력
+print("170보다 큰 학생들의 키:")
+for height in student_heights:
+    if height > 170:
+        print(height)
+
+#quiz 8 지금까지 만든 함수 전부 함수처리
+
+#quiz 8_3
+
+def print_stars(horizontal_stars, vertical_repeats):
+    for _ in range(vertical_repeats):
+        print(horizontal_stars)
+
+# 함수 호출
+horizontal_stars = '***'
+vertical_repeats = 4
+print_stars(horizontal_stars, vertical_repeats)
+
+#quiz 8_4-1
+
+def print_star_pattern(a, repeat):
+    for i in range(repeat):
+        for j in range(1):
+            print(a * 4)
+
+# 함수 호출
+a = '★'
+repeat = 3
+print_star_pattern(a, repeat)
+
+#quiz 8_4-2
+
+def print_star_pattern(a, repeat):
+    for _ in repeat:
+        print(a * 4)
+
+# 함수 호출
+a = '★'
+repeat = '1+3'
+print_star_pattern(a, repeat)
+
+#quiz 8_5-1
+
+import math
+
+def calculate_cylinder_volume():
+    def cylinder_volume(radius, height):
+        base_area = math.pi * (radius ** 2)
+        volume = base_area * height
+        return volume
+
+    radius = float(input("반지름을 입력하세요: "))
+    height = float(input("높이를 입력하세요: "))
+
+    result = cylinder_volume(radius, height)
+    print("원기둥의 부피는:", result)
+
+# 함수 호출
+calculate_cylinder_volume()
+
+#quiz 8_5-2
+
+import math
+
+def calculate_cylinder_volume(radius, height):
+    pi = math.pi
+    volume = pi * radius ** 2 * height
+    return volume
+
+# 함수 호출
+radius = 3
+height = 2
+result = calculate_cylinder_volume(radius, height)
+print("원기둥의 부피는:", result)
+
+#quiz 8_5-3
+
+import math
+
+def calculate_cylinder_volumes():
+    def cylinder_volume(radius, height):
+        if radius <= 0 or height <= 0:
+            raise ValueError("반지름과 높이는 양수이어야 합니다.")
+        # 부피 계산
+        volume = math.pi * radius ** 2 * height
+        return volume
+
+    print("여러 개의 원기둥의 부피를 계산합니다.")
+    print("반지름과 높이를 입력하세요.")
+    print("입력을 끝내려면 'q'를 입력하세요.")
+
+    cylinders = []
+    while True:
+        radius_input = input("반지름을 입력하세요: ")
+        if radius_input.lower() == 'q':
+            break
+        height_input = input("높이를 입력하세요: ")
+        if height_input.lower() == 'q':
+            break
+
+        try:
+            radius = float(radius_input)
+            height = float(height_input)
+            volume = cylinder_volume(radius, height)
+            cylinders.append({'radius': radius, 'height': height, 'volume': volume})
+        except ValueError as e:
+            print(e)
+            print("다시 시도하세요.")
+
+    print("\n입력한 원기둥들의 부피:")
+    for idx, cylinder in enumerate(cylinders, 1):
+        print(f"{idx}. 반지름: {cylinder['radius']}, 높이: {cylinder['height']}, 부피: {cylinder['volume']}")
+
+# 함수 호출
+calculate_cylinder_volumes()
+
+#quiz 8_6-1
+
+import datetime
+
+def print_current_time():
+    # 현재 시간 가져오기
+    now = datetime.datetime.now()
+
+    # 년, 월, 일, 시간, 분, 초 출력
+    print("현재 시간:")
+    print("년:", now.year)
+    print("월:", now.month)
+    print("일:", now.day)
+    print("시간:", now.hour)
+    print("분:", now.minute)
+    print("초:", now.second)
+
+# 함수 호출
+print_current_time()
+
+#quiz 8_6-2
+
+import datetime
+
+def print_current_time():
+    # 현재 시간 가져오기
+    now = datetime.datetime.now()
+
+    # 년, 월, 일, 요일, 시간, 분, 초 출력
+    print("현재 시간:")
+    print("년:", now.year)
+    print("월:", now.month)
+    print("일:", now.day)
+    print("요일:", now.strftime("%A"))  # strftime 함수를 사용하여 요일을 문자열로 출력
+    print("시간:", now.hour)
+    print("분:", now.minute)
+    print("초:", now.second)
+
+# 함수 호출
+print_current_time()
+
+#quiz 8_7-1
+
+def print_heights_above_170(student_heights):
+    for height in student_heights:
+        if height <= 170:
+            continue
+        print("키가 170보다 큰 학생의 키:", height)
+
+# 함수 호출
+student_heights = (166, 172, 177, 175, 185, 158, 130, 181, 169, 173)
+print_heights_above_170(student_heights)
+
+#quiz 8_7-2
+
+def print_heights_above_170():
+    # 학생들의 키를 입력받아서 저장할 빈 리스트 생성
+    student_heights = []
+
+    # 사용자로부터 학생들의 키 입력 받기
+    while True:
+        height_input = input("학생의 키를 입력하세요 (종료하려면 'q'를 입력하세요): ")
+        if height_input.lower() == 'q':
+            break
+
+        try:
+            height = float(height_input)
+            student_heights.append(height)
+        except ValueError:
+            print("잘못된 입력입니다. 숫자 또는 'q'를 입력하세요.")
+
+    # 입력된 키가 170보다 큰 경우에만 출력
+    print("170보다 큰 학생들의 키:")
+    for height in student_heights:
+        if height > 170:
+            print(height)
+
+# 함수 호출
+print_heights_above_170()
